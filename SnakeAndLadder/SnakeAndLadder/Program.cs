@@ -37,12 +37,15 @@ namespace SnakeAndLadder
             int player_position = 0, player_Next_Position = 0;
             Console.WriteLine("Player current position is " + player_position);
 
+            int dice_roll_count = 0;
 
             while (player_position < Finish)
             {
 
 
                 int player_Roll_Dice = Roll_Dice();
+
+                dice_roll_count++;
 
                 // The Player then checks for a Option. They are No Play,Ladder or Snake.
                 int player_Move = Player_Move_Option(player_Roll_Dice);
@@ -66,9 +69,11 @@ namespace SnakeAndLadder
                 {
                     player_position = player_Next_Position;
                 }
-
+                Console.WriteLine("Player current position After rolling the Dice is " + player_position);
             }
-            Console.WriteLine("Player current position After rolling the Dice is " + player_position);
+            //Console.WriteLine("Player current position After rolling the Dice is " + player_position);
+            Console.WriteLine();
+            Console.WriteLine("Total Number of Dice Roll in the game is " + dice_roll_count);
         }
     }
 }
