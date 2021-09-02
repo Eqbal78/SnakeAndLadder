@@ -7,7 +7,7 @@ namespace SnakeAndLadder
         static Random r = new Random();
         const int NO_PLAY = 0, LADDER = 1, SNAKE = 2;
         const int Start = 0;
-        int Finish = 100;
+        const int Finish = 100;
         static int Roll_Dice()
         {
             return r.Next(1, 7);
@@ -38,22 +38,28 @@ namespace SnakeAndLadder
             Console.WriteLine("Player current position is " + player_position);
 
             // player rolls the dice and gets the value
-            int player_Roll_Dice = Roll_Dice();
-            Console.WriteLine("Player Dice value is " + player_Roll_Dice);
 
-            // The Player then checks for a Option. They are No Play,Ladder or Snake.
-            int player_Move = Player_Move_Option(player_Roll_Dice);
-            int player_Next_Position = player_position + player_Move;
 
-            if (player_Next_Position < Start)
+            while (player_position < Finish)
             {
-                player_position = Start;
+
+                int player_Roll_Dice = Roll_Dice();
+                //Console.WriteLine("Player Dice value is " + player_Roll_Dice);
+
+                // The Player then checks for a Option. They are No Play,Ladder or Snake.
+                int player_Move = Player_Move_Option(player_Roll_Dice);
+                int player_Next_Position = player_position + player_Move;
+
+                if (player_Next_Position < Start)
+                {
+                    player_position = Start;
+                }
+                else
+                {
+                    player_position = player_Next_Position;
+                }
             }
-            else
-            {
-                player_position = player_Next_Position;
-                Console.WriteLine("Player current position After rolling the Dice is " + player_position);
-            }
+            Console.WriteLine("Player current position After rolling the Dice is " + player_position);
         }
     }
 }
